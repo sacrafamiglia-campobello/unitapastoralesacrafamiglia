@@ -10,9 +10,9 @@ repl = {
     "<title>Vita Parrocchiale — gruppi, catechesi e carità · Unità Pastorale Sacra Famiglia</title>":
         "<title>Fede e vita concreta — avvisi e informazioni utili · Unità Pastorale Sacra Famiglia</title>",
     'content="La vita della comunità dell\'Unità Pastorale Sacra Famiglia: catechesi, coro liturgico, ministranti, Caritas, gruppi giovani e famiglie, e i tempi forti dell\'anno liturgico a Campobello di Licata."':
-        'content="Avvisi della comunità, appuntamenti della Chiesa e informazioni utili per la vita di ogni giorno a Campobello di Licata: coro dei bambini «Matite Colorate», Coro del Sabato con chitarra, doposcuola gratuito, anno pastorale, catechismo, corso di Cresima per gli adulti, Rosario per la pace, Carta Dedicata a te, tempi di attesa del CUP."',
+        'content="Avvisi della comunità, appuntamenti della Chiesa e informazioni utili per la vita di ogni giorno a Campobello di Licata: coro dei bambini «Matite Colorate», Coro del Sabato con chitarra, doposcuola gratuito, Oratorio Terza Età, presentazione dei libri sul Beato Rosario Livatino, anno pastorale, catechismo, corso di Cresima per gli adulti, Rosario per la pace, Carta Dedicata a te, tempi di attesa del CUP."',
     'content="vita parrocchiale campobello, catechesi, caritas, gruppi giovani, coro liturgico, ministranti, anno liturgico"':
-        'content="avvisi parrocchia campobello di licata, anno pastorale 2026 2027, iscrizioni catechismo, corso cresima adulti campobello, coro bambini matite colorate, coro del sabato chitarra, doposcuola gratuito campobello di licata, oratorio giovanni paolo ii, rosario per la pace, carta dedicata a te 2026, cup tempi di attesa intramoenia"',
+        'content="avvisi parrocchia campobello di licata, anno pastorale 2026 2027, iscrizioni catechismo, corso cresima adulti campobello, coro bambini matite colorate, coro del sabato chitarra, doposcuola gratuito campobello di licata, oratorio giovanni paolo ii, oratorio terza età campobello, ricamo uncinetto tombolo, presentazione libri rosario livatino, il profumo dell’onestà don angelo chillura, rosario per la pace, carta dedicata a te 2026, cup tempi di attesa intramoenia"',
     'href="https://www.unitapastoralesacrafamiglia.it/vita-parrocchiale.html">': 'href="https://www.unitapastoralesacrafamiglia.it/fede-e-vita.html">',
     '<meta property="og:title" content="Vita Parrocchiale — gruppi, catechesi e carità">': '<meta property="og:title" content="Fede e vita concreta — avvisi e informazioni utili">',
     '<meta property="og:description" content="Catechesi, coro, ministranti, Caritas, gruppi giovani e famiglie: la comunità che cammina insieme.">':
@@ -46,6 +46,8 @@ I = {
  'note': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>',
  'book': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V6a2 2 0 0 1 2-2h5v15H6a2 2 0 0 0-2 2ZM20 19V6a2 2 0 0 0-2-2h-5v15h5a2 2 0 0 1 2 2Z"/></svg>',
  'bolt': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg>',
+ 'yarn': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="14" r="7"/><path d="M4.6 10.4c3.4.2 7.6 3.2 8.8 9.6M6.4 7.9c3.8.6 8.2 4.7 9.2 10.3M10 7c2.6 1.6 5.2 5 5.9 8.2M15 9l7-7"/></svg>',
+ 'books': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2Zm0 0A2 2 0 0 0 6 21h13"/><path d="M9 7h6M9 10.5h4"/></svg>',
  'quote': '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h4v4c0 3-1.5 5-4 6l-.8-1.4C7.6 14.8 8.3 13.6 8.4 12H7V7Zm8 0h4v4c0 3-1.5 5-4 6l-.8-1.4c1.4-.8 2.1-2 2.2-3.6H15V7Z"/></svg>',
 }
 
@@ -92,6 +94,8 @@ def when(rows):
 
 def item(key, cat, start, end, d, m_it, m_en, y, poster, poster_alt, title_it, title_en, rows, text_it, text_en, facts, extra='', credit='', flag_it='', flag_en='', evergreen=False, weekly=None, wico='note', badge=None):
     # badge = (giornoJS|None, m_it, m_en, y_it, y_en): riquadro data con icona e due righe (es. «Tutto il 2026»)
+    # weekly = (giornoJS | (giornoJS, giornoJS, …), m_it, m_en, y_it, y_en): appuntamento settimanale su uno o più giorni
+    wdays = ','.join(str(x) for x in (weekly[0] if isinstance(weekly[0], (tuple, list)) else (weekly[0],))) if weekly else ''
     if weekly or badge:
         b = weekly or badge
         date_html = f'<div class="fv-date evergreen weekly" aria-hidden="true">{I[wico]}<span class="m"><span data-lang-it>{b[1]}</span><span data-lang-en>{b[2]}</span></span><span class="y"><span data-lang-it>{b[3]}</span><span data-lang-en>{b[4]}</span></span></div>'
@@ -101,7 +105,7 @@ def item(key, cat, start, end, d, m_it, m_en, y, poster, poster_alt, title_it, t
                  f'<div class="fv-date" aria-hidden="true"><span class="d">{d}</span><span class="m"><span data-lang-it>{m_it}</span><span data-lang-en>{m_en}</span></span><span class="y">{y}</span></div>')
     flag = f'<span class="fv-flag"><span data-lang-it>{flag_it}</span><span data-lang-en>{flag_en}</span></span>' if flag_it else ''
     return f'''
-      <article class="fv-item" id="{key}" data-cat="{cat}"{f' data-weekly="{weekly[0]}"' if weekly else ''}{f' data-start="{start}"' if start else ''}{f' data-end="{end}"' if end else ''} data-reveal>
+      <article class="fv-item" id="{key}" data-cat="{cat}"{f' data-weekly="{wdays}"' if weekly else ''}{f' data-start="{start}"' if start else ''}{f' data-end="{end}"' if end else ''} data-reveal>
         {date_html}
         <div class="fv-card">
           <button class="fv-poster" type="button" data-poster="assets/img/avvisi/{poster}.jpg" data-caption-it="{title_it}" data-caption-en="{title_en}" aria-label="Apri la locandina: {title_it}">
@@ -189,6 +193,21 @@ items.append(item('doposcuola', 'parrocchia', '2026-10-01', '', '', '', '', '',
   flag_it='Gratuito', flag_en='Free',
   weekly=(4, 'Ogni giovedì', 'Every Thursday', 'ore 15:30–17:30', '3:30–5:30 pm'), wico='book'))
 
+# 0c) Oratorio Terza Età… per tutte le età — ogni martedì (Oratorio Gesù e Maria) e ogni venerdì (Oratorio S. Giuseppe) alle 15:45
+items.append(item('oratorio-terza-eta', 'parrocchia', '', '', '', '', '', '',
+  'oratorio-terza-eta', "Locandina dell'Unità Pastorale Sacra Famiglia, parrocchie S. Giuseppe e Gesù e Maria: Oratorio Terza Età per tutte le età, ogni venerdì alle 15:45 nell'Oratorio S. Giuseppe e ogni martedì alle 15:45 nell'Oratorio Gesù e Maria. Momenti di stare insieme con ricamo, uncinetto, lavoro a maglia e ai ferri, tombolo e merletto ad ago",
+  'Oratorio Terza Età… per tutte le età!', 'Third Age Oratory… for all ages!',
+  [('clock', 'Ogni martedì e ogni venerdì, alle ore 15:45', 'Every Tuesday and every Friday at 3:45 pm'),
+   ('pin', "Martedì nell'Oratorio Gesù e Maria · venerdì nell'Oratorio S. Giuseppe", 'Tuesdays at the Gesù e Maria Oratory · Fridays at the San Giuseppe Oratory')],
+  "<strong>Momenti di stare insieme… ognuno con il proprio talento e arte!</strong> Le parrocchie di San Giuseppe e di Gesù e Maria aprono i loro oratori per pomeriggi di compagnia, amicizia e lavori fatti a mano: un appuntamento pensato per la terza età, ma aperto davvero a tutte le età.",
+  "<strong>Time to be together… everyone with their own talent and craft!</strong> The parishes of San Giuseppe and Gesù e Maria open their oratories for afternoons of company, friendship and handicrafts: a gathering designed for older people, but truly open to all ages.",
+  [("<strong>Ricamo, uncinetto, lavoro a maglia e ai ferri, tombolo, merletto ad ago</strong>: porta il tuo lavoro e la tua arte, o vieni a imparare.", "<strong>Embroidery, crochet, knitting, bobbin lace and needle lace</strong>: bring your work and your craft, or come and learn."),
+   ("<strong>Ogni martedì</strong> alle <strong>15:45</strong> nell'Oratorio Gesù e Maria e <strong>ogni venerdì</strong> alle <strong>15:45</strong> nell'Oratorio S. Giuseppe.", "<strong>Every Tuesday</strong> at <strong>3:45 pm</strong> at the Gesù e Maria Oratory and <strong>every Friday</strong> at <strong>3:45 pm</strong> at the San Giuseppe Oratory."),
+   ("Per informazioni rivolgetevi ai sacerdoti in parrocchia oppure <a href=\"contatti.html\">scriveteci</a>.", "For information ask the priests at the parish or <a href=\"contatti.html\">write to us</a>.")],
+  extra=f'<blockquote class="fv-quote">{I["quote"]}<p><span data-lang-it>«Dai il tuo contributo e soprattutto la tua presenza.»</span><span data-lang-en>“Give your contribution and, above all, your presence.”</span></p></blockquote>',
+  flag_it='Aperto a tutte le età', flag_en='Open to all ages',
+  weekly=((2, 5), 'Martedì e venerdì', 'Tue &amp; Fri', 'ore 15:45', '3:45 pm'), wico='yarn'))
+
 # 1) 1–7 ottobre — Rosario per la pace con Papa Leone XIV
 items.append(item('rosario-per-la-pace', 'chiesa', '2026-10-01', '2026-10-07', '1', 'ottobre', 'October', '2026',
   'rosario-papa-leone', 'Locandina: con Papa Leone XIV il 1° ottobre il Rosario per la pace',
@@ -273,6 +292,21 @@ items.append(item('carta-dedicata-a-te', 'vita', '2026-11-04', '2027-04-30', '4'
   extra='<p class="fv-help"><span data-lang-it>Per sapere se rientri tra i beneficiari rivolgiti ai Servizi sociali del Comune. Se hai bisogno di una mano, parlane con i sacerdoti o con la Caritas parrocchiale: condividi l\'informazione con chi potrebbe averne bisogno.</span><span data-lang-en>To find out whether you are a beneficiary, contact the Municipality\'s social services. If you need help, speak to the priests or the parish Caritas — and share this with anyone who might need it.</span></p>',
   credit=f'<p class="fv-credit">{I["info"]}<span><span data-lang-it>Grafica</span><span data-lang-en>Artwork</span>: Giovanna Cutri</span></p>'))
 
+# 5b) Lunedì 16 novembre — Presentazione dei libri (don Angelo Chillura; Luigi D'Angelo sul Beato Rosario Livatino)
+items.append(item('presentazione-libri-2026', 'parrocchia', '2026-11-16', '2026-11-16', '16', 'novembre', 'November', '2026',
+  'presentazione-libri-2026', "Locandina della Comunità Ecclesiale di Campobello di Licata: presentazione dei libri «Il profumo dell'onestà» di don Angelo Chillura e «Rosario Livatino: tra magistratura e fede operosa» di Luigi D'Angelo, relatori don Angelo Chillura e don Giuseppe Livatino, lunedì 16 novembre 2026, ore 17:30 Santa Messa e ore 18:30 conferenza nella Chiesa di San Giuseppe",
+  'Presentazione dei libri: legalità, santità e il Beato Rosario Livatino', 'Book presentation: legality, holiness and Blessed Rosario Livatino',
+  [('clock', 'Lunedì 16 novembre · ore 17:30 Santa Messa, ore 18:30 conferenza', 'Monday 16 November · 5:30 pm Holy Mass, 6:30 pm talk'),
+   ('pin', 'Chiesa di San Giuseppe, Campobello di Licata', 'Church of San Giuseppe, Campobello di Licata')],
+  "La Comunità Ecclesiale di Campobello di Licata presenta due libri che raccontano la fede vissuta nella giustizia e nell'onestà di ogni giorno, sulle orme del <strong>Beato Rosario Livatino</strong>, il giudice martire. Dopo la Santa Messa, la conferenza con i relatori. <strong>La cittadinanza è invitata a partecipare.</strong>",
+  "The Church community of Campobello di Licata presents two books about faith lived out in justice and everyday honesty, following in the footsteps of <strong>Blessed Rosario Livatino</strong>, the martyred judge. After Holy Mass, a talk with the speakers. <strong>All citizens are warmly invited.</strong>",
+  [("<strong>«Il profumo dell'onestà»</strong> — <em>Lezione di legalità e santità</em>, di <strong>don Angelo Chillura</strong>.", "<strong>«Il profumo dell'onestà»</strong> (The scent of honesty) — <em>a lesson in legality and holiness</em>, by <strong>Fr Angelo Chillura</strong>."),
+   ("<strong>«Rosario Livatino: tra magistratura e fede operosa»</strong> — <em>Testimonianze sul Beato Giudice</em>, di <strong>Luigi D'Angelo</strong>.", "<strong>«Rosario Livatino: tra magistratura e fede operosa»</strong> (Rosario Livatino: between the judiciary and active faith) — <em>testimonies on the Blessed Judge</em>, by <strong>Luigi D'Angelo</strong>."),
+   ("Relatori: <strong>don Angelo Chillura</strong> e <strong>don Giuseppe Livatino</strong>.", "Speakers: <strong>Fr Angelo Chillura</strong> and <strong>Fr Giuseppe Livatino</strong>."),
+   ("Ore <strong>17:30</strong> Santa Messa · ore <strong>18:30</strong> conferenza, nella Chiesa di San Giuseppe.", "<strong>5:30 pm</strong> Holy Mass · <strong>6:30 pm</strong> talk, in the Church of San Giuseppe.")],
+  extra=f'<blockquote class="fv-quote">{I["quote"]}<p><span data-lang-it>«Quando moriremo, nessuno ci verrà a chiedere quanto siamo stati credenti, ma credibili»</span><span data-lang-en>“When we die, no one will ask us how much we believed, but how believable we were”</span> <cite>Beato Rosario Livatino</cite></p></blockquote>',
+  flag_it='Aperto a tutti', flag_en='Open to all'))
+
 # 6) CUP pieno — sempre valido
 extra_cup = '''<div class="fv-classes" role="list">
               <div role="listitem"><b class="u">U</b><span><span data-lang-it>entro 72 ore</span><span data-lang-en>within 72 hours</span></span></div>
@@ -346,7 +380,7 @@ lightbox = '''<!-- ===== LOCANDINA A SCHERMO INTERO ===== -->
       var st = it.querySelector('.fv-status');
       it.classList.remove('is-past', 'is-next');
       if (it.dataset.weekly) {
-        var w = (+it.dataset.weekly - now.getDay() + 7) % 7;
+        var w = Math.min.apply(null, it.dataset.weekly.split(',').map(function (g) { return (+g - now.getDay() + 7) % 7; }));
         st.textContent = w === 0 ? (en() ? 'Today' : 'Oggi') : w === 1 ? (en() ? 'Tomorrow' : 'Domani') : (en() ? 'In ' + w + ' days' : 'Tra ' + w + ' giorni');
         st.className = 'fv-status ' + (w === 0 ? 'now' : 'soon'); st.hidden = false; return;
       }
@@ -447,6 +481,31 @@ ld = [
    "image": "https://www.unitapastoralesacrafamiglia.it/assets/img/avvisi/cresima-adulti-2026.jpg",
    "description": "Aperte le iscrizioni al corso di Cresima per gli adulti: primo incontro venerdì 16 ottobre 2026 alle 19:00 nella Chiesa di San Giuseppe. Un'occasione per riscoprire la fede, prepararsi a ricevere il Sacramento della Cresima e vivere insieme un nuovo cammino.",
    "audience": {"@type": "PeopleAudience", "audienceType": "Adulti"},
+   "organizer": org, "isAccessibleForFree": True},
+  {"@context": "https://schema.org", "@type": "Event", "name": "Oratorio Terza Età… per tutte le età — Oratorio S. Giuseppe",
+   "startDate": "2026-10-16T15:45:00+02:00", "eventStatus": "https://schema.org/EventScheduled",
+   "eventSchedule": {"@type": "Schedule", "repeatFrequency": "P1W", "byDay": "https://schema.org/Friday", "startTime": "15:45", "scheduleTimezone": "Europe/Rome"},
+   "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+   "location": {"@type": "Place", "name": "Oratorio della Parrocchia San Giuseppe", "address": {"@type": "PostalAddress", "addressLocality": "Campobello di Licata", "addressRegion": "AG", "postalCode": "92023", "addressCountry": "IT"}},
+   "image": "https://www.unitapastoralesacrafamiglia.it/assets/img/avvisi/oratorio-terza-eta.jpg",
+   "description": "Ogni venerdì alle 15:45 nell'Oratorio S. Giuseppe: momenti di stare insieme, ognuno con il proprio talento e arte (ricamo, uncinetto, lavoro a maglia e ai ferri, tombolo, merletto ad ago). Per la terza età e per tutte le età.",
+   "audience": {"@type": "PeopleAudience", "audienceType": "Terza età e persone di tutte le età"},
+   "organizer": org, "isAccessibleForFree": True},
+  {"@context": "https://schema.org", "@type": "Event", "name": "Oratorio Terza Età… per tutte le età — Oratorio Gesù e Maria",
+   "startDate": "2026-10-20T15:45:00+02:00", "eventStatus": "https://schema.org/EventScheduled",
+   "eventSchedule": {"@type": "Schedule", "repeatFrequency": "P1W", "byDay": "https://schema.org/Tuesday", "startTime": "15:45", "scheduleTimezone": "Europe/Rome"},
+   "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+   "location": {"@type": "Place", "name": "Oratorio della Parrocchia Gesù e Maria", "address": {"@type": "PostalAddress", "addressLocality": "Campobello di Licata", "addressRegion": "AG", "postalCode": "92023", "addressCountry": "IT"}},
+   "image": "https://www.unitapastoralesacrafamiglia.it/assets/img/avvisi/oratorio-terza-eta.jpg",
+   "description": "Ogni martedì alle 15:45 nell'Oratorio Gesù e Maria: momenti di stare insieme, ognuno con il proprio talento e arte (ricamo, uncinetto, lavoro a maglia e ai ferri, tombolo, merletto ad ago). Per la terza età e per tutte le età.",
+   "audience": {"@type": "PeopleAudience", "audienceType": "Terza età e persone di tutte le età"},
+   "organizer": org, "isAccessibleForFree": True},
+  {"@context": "https://schema.org", "@type": "Event", "name": "Presentazione dei libri «Il profumo dell'onestà» e «Rosario Livatino: tra magistratura e fede operosa»",
+   "startDate": "2026-11-16T17:30:00+01:00", "eventStatus": "https://schema.org/EventScheduled",
+   "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "location": place("Chiesa di San Giuseppe", "Piazza San Giuseppe"),
+   "image": "https://www.unitapastoralesacrafamiglia.it/assets/img/avvisi/presentazione-libri-2026.jpg",
+   "description": "Lunedì 16 novembre 2026 nella Chiesa di San Giuseppe: alle 17:30 Santa Messa, alle 18:30 conferenza di presentazione dei libri «Il profumo dell'onestà. Lezione di legalità e santità» di don Angelo Chillura e «Rosario Livatino: tra magistratura e fede operosa. Testimonianze sul Beato Giudice» di Luigi D'Angelo. Relatori: don Angelo Chillura e don Giuseppe Livatino. La cittadinanza è invitata a partecipare.",
+   "performer": [{"@type": "Person", "name": "don Angelo Chillura"}, {"@type": "Person", "name": "don Giuseppe Livatino"}],
    "organizer": org, "isAccessibleForFree": True},
 ]
 ld_html = ''.join('<script type="application/ld+json">\n' + json.dumps(x, ensure_ascii=False) + '\n</script>\n' for x in ld)
