@@ -1012,6 +1012,15 @@ html,body{overflow-x:clip}
 .sh-link{--c:var(--gold-deep)}
 .sh.done{--c:#2e7d5b;color:#fff;background:#2e7d5b;border-color:#2e7d5b}
 .sh.done svg{color:#fff}
+/* barra di condivisione dentro le card fotografiche scure (Momenti di comunità) */
+.fv-share.on-dark{position:relative;z-index:2;border-top-color:rgba(220,192,130,.35);cursor:default}
+.fv-share.on-dark .fv-share-lbl{color:#dcc082}
+.fv-share.on-dark .sh{color:#fff;background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.22);backdrop-filter:blur(6px)}
+.fv-share.on-dark .sh svg{color:#fff}
+.fv-share.on-dark .sh:hover,.fv-share.on-dark .sh:focus-visible{background:var(--c);border-color:var(--c)}
+.fv-share.on-dark .sh-ig:hover,.fv-share.on-dark .sh-ig:focus-visible{background:linear-gradient(45deg,#feda75,#fa7e1e 25%,#d62976 55%,#962fbf 80%,#4f5bd5);border-color:transparent}
+@media(max-width:820px){.church-card.event.featured:has(.fv-share){min-height:740px}}
+.church-card.event:target{box-shadow:0 0 0 3px rgba(196,160,82,.55),var(--shadow)}
 .fv-item:target .fv-card{border-color:var(--gold);box-shadow:0 0 0 3px rgba(196,160,82,.28),var(--shadow)}
 @media(max-width:560px){
   .fv-share{flex-direction:column;align-items:stretch;gap:.6rem}
