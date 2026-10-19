@@ -60,8 +60,8 @@ h1{font:600 ${it.title.length > 44 ? 52 : 60}px/1.08 'Cormorant Garamond',serif;
 <div class="txt">
   <div class="brand">${crest.replace(/<\?xml[^>]*>/, '')}<div><b>Unità Pastorale Sacra Famiglia</b><small>Campobello di Licata</small></div></div>
   <span class="chip">Momenti di comunità${it.n && !/foto/.test(it.when) ? ' · ' + it.n + ' foto' : ''}</span>
-  <h1>${esc(it.title)}</h1>
-  <div class="when"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>${esc(cut(it.when, 120))}</span></div>
+  <h1>${esc(it.title).replace(/\b(P\.|Fr\.) /g, '$1&nbsp;')}</h1>
+  <div class="when"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>${esc(cut(it.when, 120))}</span></div>
   <div class="site">unitapastoralesacrafamiglia.it · Vita parrocchiale</div>
 </div></body></html>`;
 }

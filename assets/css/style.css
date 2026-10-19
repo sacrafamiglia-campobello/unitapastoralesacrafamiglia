@@ -1020,6 +1020,11 @@ html,body{overflow-x:clip}
 .fv-share.on-dark .sh:hover,.fv-share.on-dark .sh:focus-visible{background:var(--c);border-color:var(--c)}
 .fv-share.on-dark .sh-ig:hover,.fv-share.on-dark .sh-ig:focus-visible{background:linear-gradient(45deg,#feda75,#fa7e1e 25%,#d62976 55%,#962fbf 80%,#4f5bd5);border-color:transparent}
 @media(max-width:820px){.church-card.event.featured:has(.fv-share){min-height:740px}}
+.church-card.event:not(.featured):has(.fv-share){min-height:700px}
+.church-card.event:not(.featured):has(.fv-share)::after{background:linear-gradient(to top,rgba(17,22,52,.97) 0%,rgba(17,22,52,.93) 52%,rgba(17,22,52,.55) 70%,rgba(17,22,52,.08) 100%)}
+.church-card.event:not(.featured) .fv-share{flex-direction:column;align-items:stretch;gap:.55rem}
+.church-card.event:not(.featured) .fv-share-btns{display:grid;grid-template-columns:1fr 1fr;gap:.45rem}
+.church-card.event:not(.featured) .sh{justify-content:center;padding:.6rem .7rem}
 .church-card.event:target{box-shadow:0 0 0 3px rgba(196,160,82,.55),var(--shadow)}
 .fv-item:target .fv-card{border-color:var(--gold);box-shadow:0 0 0 3px rgba(196,160,82,.28),var(--shadow)}
 @media(max-width:560px){
