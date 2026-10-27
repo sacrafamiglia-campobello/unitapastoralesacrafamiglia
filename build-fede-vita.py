@@ -10,9 +10,9 @@ repl = {
     "<title>Vita Parrocchiale — gruppi, catechesi e carità · Unità Pastorale Sacra Famiglia</title>":
         "<title>Fede e vita concreta — avvisi e informazioni utili · Unità Pastorale Sacra Famiglia</title>",
     'content="La vita della comunità dell\'Unità Pastorale Sacra Famiglia: catechesi, coro liturgico, ministranti, Caritas, gruppi giovani e famiglie, e i tempi forti dell\'anno liturgico a Campobello di Licata."':
-        'content="Avvisi della comunità, appuntamenti della Chiesa e informazioni utili per la vita di ogni giorno a Campobello di Licata: coro dei bambini «Matite Colorate», Coro del Sabato con chitarra, doposcuola gratuito, Oratorio Terza Età, presentazione dei libri sul Beato Rosario Livatino, anno pastorale, catechismo, corso di Cresima per gli adulti, Rosario per la pace, Carta Dedicata a te, tempi di attesa del CUP."',
+        'content="Avvisi della comunità, appuntamenti della Chiesa e informazioni utili per la vita di ogni giorno a Campobello di Licata: coro dei bambini «Matite Colorate», Coro del Sabato con chitarra, doposcuola gratuito, Oratorio Terza Età, presentazione dei libri sul Beato Rosario Livatino, anno pastorale, catechismo, corso di Cresima per gli adulti, festa dei bambini per Tutti i Santi, Rosario per la pace, Carta Dedicata a te, tempi di attesa del CUP."',
     'content="vita parrocchiale campobello, catechesi, caritas, gruppi giovani, coro liturgico, ministranti, anno liturgico"':
-        'content="avvisi parrocchia campobello di licata, anno pastorale 2026 2027, iscrizioni catechismo, corso cresima adulti campobello, coro bambini matite colorate, coro del sabato chitarra, doposcuola gratuito campobello di licata, oratorio giovanni paolo ii, oratorio terza età campobello, ricamo uncinetto tombolo, presentazione libri rosario livatino, il profumo dell’onestà don angelo chillura, rosario per la pace, carta dedicata a te 2026, cup tempi di attesa intramoenia"',
+        'content="avvisi parrocchia campobello di licata, anno pastorale 2026 2027, iscrizioni catechismo, corso cresima adulti campobello, festa di tutti i santi bambini, ognissanti campobello di licata, coro bambini matite colorate, coro del sabato chitarra, doposcuola gratuito campobello di licata, oratorio giovanni paolo ii, oratorio terza età campobello, ricamo uncinetto tombolo, presentazione libri rosario livatino, il profumo dell’onestà don angelo chillura, rosario per la pace, carta dedicata a te 2026, cup tempi di attesa intramoenia"',
     'href="https://www.unitapastoralesacrafamiglia.it/vita-parrocchiale.html">': 'href="https://www.unitapastoralesacrafamiglia.it/fede-e-vita.html">',
     '<meta property="og:title" content="Vita Parrocchiale — gruppi, catechesi e carità">': '<meta property="og:title" content="Fede e vita concreta — avvisi e informazioni utili">',
     '<meta property="og:description" content="Catechesi, coro, ministranti, Caritas, gruppi giovani e famiglie: la comunità che cammina insieme.">':
@@ -260,6 +260,20 @@ items.append(item('cresima-adulti-2026', 'parrocchia', '2026-10-16', '2026-10-16
   extra=f'<blockquote class="fv-quote">{I["quote"]}<p><span data-lang-it>«Riceverete la forza dallo Spirito Santo che scenderà su di voi, e di me sarete testimoni»</span><span data-lang-en>“You will receive power when the Holy Spirit comes upon you, and you will be my witnesses”</span> <cite>At 1,8</cite></p></blockquote>',
   flag_it='Iscrizioni aperte', flag_en='Enrolment open'))
 
+# 3c) Festa di Tutti i Santi per i bambini — sabato 31 ottobre, 16:00–17:00, sagrato di San Giuseppe
+items.append(item('festa-dei-santi-2026', 'parrocchia', '2026-10-31', '2026-10-31', '31', 'ottobre', 'October', '2026',
+  'festa-dei-santi-2026', "Locandina: «Vogliamo fare festa? Festeggiamo i Santi.» Bambini vestiti da santi con cesti di fiori e una lanterna sotto la luna: invito ai bambini per sabato 31 ottobre dalle 16:00 alle 17:00 sul sagrato della Chiesa di San Giuseppe per festeggiare la Solennità di Tutti i Santi; i genitori sono invitati a portare qualcosa per la merenda",
+  'Vogliamo fare festa? Festeggiamo i Santi!', "Shall we celebrate? Let's celebrate the Saints!",
+  [('clock', 'Sabato 31 ottobre · dalle ore 16:00 alle 17:00', 'Saturday 31 October · 4 to 5 pm'),
+   ('pin', 'Sagrato della Chiesa di San Giuseppe', 'In front of the Church of San Giuseppe')],
+  "Bambini, vi aspettiamo sul sagrato della Chiesa di San Giuseppe per festeggiare insieme la <strong>Solennità di Tutti i Santi</strong>: un pomeriggio di festa alla vigilia di Ognissanti.",
+  "Children, we look forward to seeing you in front of the Church of San Giuseppe to celebrate together the <strong>Solemnity of All Saints</strong>: an afternoon of celebration on the eve of All Saints' Day.",
+  [("Appuntamento <strong>sabato 31 ottobre</strong>, dalle <strong>16:00</strong> alle <strong>17:00</strong>, sul sagrato della Chiesa di San Giuseppe.", "Meet us on <strong>Saturday 31 October</strong>, from <strong>4 pm</strong> to <strong>5 pm</strong>, in front of the Church of San Giuseppe."),
+   ("<strong>I genitori sono invitati a portare qualcosa per la merenda!</strong>", "<strong>Parents are invited to bring something for an afternoon snack!</strong>"),
+   ("<strong>A presto!</strong>", "<strong>See you soon!</strong>")],
+  extra=f'<blockquote class="fv-quote">{I["quote"]}<p><span data-lang-it>«Siate santi, perché io sono santo»</span><span data-lang-en>“Be holy, for I am holy”</span> <cite>1 Pt 1,16</cite></p></blockquote>',
+  flag_it='Per i bambini', flag_en='For children'))
+
 # 4) Bonus sociale bollette 2026 — luce, gas, acqua, rifiuti (infografica UILM Novara)
 items.append(item('bonus-sociale-bollette-2026', 'vita', '2026-01-01', '2026-12-31', '', '', '', '',
   'bonus-sociale-bollette-2026', 'Infografica: Bonus sociale bollette 2026, sconti su luce, gas, acqua e rifiuti per le famiglie con ISEE basso',
@@ -481,6 +495,13 @@ ld = [
    "image": "https://www.unitapastoralesacrafamiglia.it/assets/img/avvisi/cresima-adulti-2026.jpg",
    "description": "Aperte le iscrizioni al corso di Cresima per gli adulti: primo incontro venerdì 16 ottobre 2026 alle 19:00 nella Chiesa di San Giuseppe. Un'occasione per riscoprire la fede, prepararsi a ricevere il Sacramento della Cresima e vivere insieme un nuovo cammino.",
    "audience": {"@type": "PeopleAudience", "audienceType": "Adulti"},
+   "organizer": org, "isAccessibleForFree": True},
+  {"@context": "https://schema.org", "@type": "Event", "name": "Festeggiamo i Santi — festa dei bambini per la Solennità di Tutti i Santi",
+   "startDate": "2026-10-31T16:00:00+01:00", "endDate": "2026-10-31T17:00:00+01:00", "eventStatus": "https://schema.org/EventScheduled",
+   "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "location": place("Sagrato della Chiesa di San Giuseppe", "Piazza San Giuseppe"),
+   "image": "https://www.unitapastoralesacrafamiglia.it/assets/img/avvisi/festa-dei-santi-2026.jpg",
+   "description": "Bambini, vi aspettiamo sabato 31 ottobre 2026 dalle 16:00 alle 17:00 sul sagrato della Chiesa di San Giuseppe per festeggiare la Solennità di Tutti i Santi. I genitori sono invitati a portare qualcosa per la merenda.",
+   "audience": {"@type": "PeopleAudience", "audienceType": "Bambini"},
    "organizer": org, "isAccessibleForFree": True},
   {"@context": "https://schema.org", "@type": "Event", "name": "Oratorio Terza Età… per tutte le età — Oratorio S. Giuseppe",
    "startDate": "2026-10-16T15:45:00+02:00", "eventStatus": "https://schema.org/EventScheduled",
