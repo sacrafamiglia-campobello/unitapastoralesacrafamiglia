@@ -48,6 +48,7 @@ I = {
  'bolt': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg>',
  'yarn': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="14" r="7"/><path d="M4.6 10.4c3.4.2 7.6 3.2 8.8 9.6M6.4 7.9c3.8.6 8.2 4.7 9.2 10.3M10 7c2.6 1.6 5.2 5 5.9 8.2M15 9l7-7"/></svg>',
  'books': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2Zm0 0A2 2 0 0 0 6 21h13"/><path d="M9 7h6M9 10.5h4"/></svg>',
+ 'heart': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.3-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 12c0 4.7-7 9-7 9Z"/></svg>',
  'quote': '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h4v4c0 3-1.5 5-4 6l-.8-1.4C7.6 14.8 8.3 13.6 8.4 12H7V7Zm8 0h4v4c0 3-1.5 5-4 6l-.8-1.4c1.4-.8 2.1-2 2.2-3.6H15V7Z"/></svg>',
 }
 
@@ -92,7 +93,8 @@ def when(rows):
         out += f'<div class="fv-when-row">{I[ico]}<span><span data-lang-it>{it}</span><span data-lang-en>{en}</span></span></div>'
     return out
 
-def item(key, cat, start, end, d, m_it, m_en, y, poster, poster_alt, title_it, title_en, rows, text_it, text_en, facts, extra='', credit='', flag_it='', flag_en='', evergreen=False, weekly=None, wico='note', badge=None):
+def item(key, cat, start, end, d, m_it, m_en, y, poster, poster_alt, title_it, title_en, rows, text_it, text_en, facts, extra='', credit='', flag_it='', flag_en='', evergreen=False, weekly=None, wico='note', badge=None, thumb=''):
+    # thumb = miniatura diversa dalla locandina (es. la colonna di una giornata): al clic si apre sempre la locandina intera
     # badge = (giornoJS|None, m_it, m_en, y_it, y_en): riquadro data con icona e due righe (es. «Tutto il 2026»)
     # weekly = (giornoJS | (giornoJS, giornoJS, …), m_it, m_en, y_it, y_en): appuntamento settimanale su uno o più giorni
     wdays = ','.join(str(x) for x in (weekly[0] if isinstance(weekly[0], (tuple, list)) else (weekly[0],))) if weekly else ''
@@ -109,7 +111,7 @@ def item(key, cat, start, end, d, m_it, m_en, y, poster, poster_alt, title_it, t
         {date_html}
         <div class="fv-card">
           <button class="fv-poster" type="button" data-poster="assets/img/avvisi/{poster}.jpg" data-caption-it="{title_it}" data-caption-en="{title_en}" aria-label="Apri la locandina: {title_it}">
-            <img src="assets/img/avvisi/{poster}-t.jpg" alt="{poster_alt}" loading="lazy" width="560" height="560">
+            <img src="assets/img/avvisi/{thumb or poster}-t.jpg" alt="{poster_alt}" loading="lazy" width="560" height="560">
             <span class="fv-zoom">{I["zoom"]}<span data-lang-it>Locandina</span><span data-lang-en>Poster</span></span>
           </button>
           <div class="fv-body">
@@ -274,6 +276,50 @@ items.append(item('festa-dei-santi-2026', 'parrocchia', '2026-10-31', '2026-10-3
   extra=f'<blockquote class="fv-quote">{I["quote"]}<p><span data-lang-it>«Siate santi, perché io sono santo»</span><span data-lang-en>“Be holy, for I am holy”</span> <cite>1 Pt 1,16</cite></p></blockquote>',
   flag_it='Per i bambini', flag_en='For children'))
 
+# 3d) «Avvisi e celebrazioni» 31 ottobre – 2 novembre: una sola locandina, un avviso per giornata
+#     (miniatura = colonna della giornata, ritagliata da build-avvisi.js; al clic si apre la locandina intera)
+CEL_LINK = ('Tutti gli appuntamenti sono nella locandina «Avvisi e celebrazioni»: <strong>vi aspettiamo a braccia aperte!</strong>',
+            'All the events are in the “Notices and celebrations” poster: <strong>we welcome you with open arms!</strong>')
+items.append(item('sabato-31-ottobre-2026', 'parrocchia', '2026-10-31', '2026-10-31', '31', 'ottobre', 'October', '2026',
+  'celebrazioni-santi-defunti-2026', "Dalla locandina «Avvisi e celebrazioni»: sabato 31 ottobre, ore 16:00 nella Parrocchia San Giuseppe festa al catechismo, festa di Tutti i Santi, con bambini vestiti da santi sotto una ghirlanda di bandierine; ore 17:30 Santa Messa nella Parrocchia Gesù e Maria",
+  'Sabato 31 ottobre: festa al catechismo e Santa Messa', 'Saturday 31 October: catechism party and Holy Mass',
+  [('clock', 'Sabato 31 ottobre · ore 16:00 festa al catechismo, ore 17:30 Santa Messa', 'Saturday 31 October · 4 pm catechism party, 5:30 pm Holy Mass'),
+   ('pin', 'Parrocchia San Giuseppe (16:00) · Parrocchia Gesù e Maria (17:30)', 'Parish of San Giuseppe (4 pm) · Parish of Gesù e Maria (5:30 pm)')],
+  "Il sabato che apre i giorni di Tutti i Santi e della Commemorazione dei defunti: nel pomeriggio la festa dei bambini del catechismo, poi la Santa Messa.",
+  "The Saturday that opens the days of All Saints and of the Commemoration of the Faithful Departed: in the afternoon the catechism children's party, then Holy Mass.",
+  [("Ore <strong>16:00</strong> · Parrocchia San Giuseppe: <strong>festa al catechismo, festa di Tutti i Santi</strong> (i dettagli nell'avviso <a href=\"#festa-dei-santi-2026\">«Festeggiamo i Santi»</a>).", "<strong>4 pm</strong> · Parish of San Giuseppe: <strong>catechism party, All Saints party</strong> (details in the <a href=\"#festa-dei-santi-2026\">“Let's celebrate the Saints”</a> notice)."),
+   ("Ore <strong>17:30</strong> · Parrocchia Gesù e Maria: <strong>Santa Messa</strong>.", "<strong>5:30 pm</strong> · Parish of Gesù e Maria: <strong>Holy Mass</strong>."),
+   CEL_LINK],
+  thumb='celebrazioni-santi-defunti-2026-31ott'))
+
+items.append(item('tutti-i-santi-2026', 'parrocchia', '2026-11-01', '2026-11-01', '1', 'novembre', 'November', '2026',
+  'celebrazioni-santi-defunti-2026', "Dalla locandina «Avvisi e celebrazioni»: domenica 1° novembre, festa di Tutti i Santi, con la Madonna e il Bambino tra i santi; Sante Messe alle 9:30 a Gesù e Maria, alle 11:00 a San Giuseppe, alle 18:00 a Gesù e Maria e alle 18:30 a San Giuseppe",
+  'Domenica 1° novembre: festa di Tutti i Santi', "Sunday 1 November: All Saints' Day",
+  [('clock', 'Domenica 1° novembre · Sante Messe alle 9:30, 11:00, 18:00 e 18:30', 'Sunday 1 November · Holy Masses at 9:30 am, 11 am, 6 pm and 6:30 pm'),
+   ('pin', 'Chiesa di Gesù e Maria (9:30 e 18:00) · Chiesa di San Giuseppe (11:00 e 18:30)', 'Church of Gesù e Maria (9:30 am and 6 pm) · Church of San Giuseppe (11 am and 6:30 pm)')],
+  "Nella festa di Tutti i Santi la Chiesa celebra insieme tutti coloro che già godono della gioia di Dio: la comunità si ritrova attorno all'altare nelle due chiese.",
+  "On All Saints' Day the Church celebrates together all those who already share in the joy of God: the community gathers around the altar in both churches.",
+  [("Ore <strong>9:30</strong> · Santa Messa a <strong>Gesù e Maria</strong>.", "<strong>9:30 am</strong> · Holy Mass at <strong>Gesù e Maria</strong>."),
+   ("Ore <strong>11:00</strong> · Santa Messa a <strong>San Giuseppe</strong>.", "<strong>11 am</strong> · Holy Mass at <strong>San Giuseppe</strong>."),
+   ("Ore <strong>18:00</strong> · Santa Messa a <strong>Gesù e Maria</strong>.", "<strong>6 pm</strong> · Holy Mass at <strong>Gesù e Maria</strong>."),
+   ("Ore <strong>18:30</strong> · Santa Messa a <strong>San Giuseppe</strong>.", "<strong>6:30 pm</strong> · Holy Mass at <strong>San Giuseppe</strong>."),
+   CEL_LINK],
+  extra=f'<blockquote class="fv-quote">{I["quote"]}<p><span data-lang-it>«Rallegratevi ed esultate, perché grande è la vostra ricompensa nei cieli»</span><span data-lang-en>“Rejoice and be glad, for your reward is great in heaven”</span> <cite>Mt 5,12</cite></p></blockquote>',
+  thumb='celebrazioni-santi-defunti-2026-1nov'))
+
+items.append(item('commemorazione-defunti-2026', 'parrocchia', '2026-11-02', '2026-11-02', '2', 'novembre', 'November', '2026',
+  'celebrazioni-santi-defunti-2026', "Dalla locandina «Avvisi e celebrazioni»: lunedì 2 novembre, Commemorazione dei fedeli defunti, con un cimitero illuminato dai lumini; ore 11:00 Santa Messa al cimitero, ore 17:30 Santa Messa per tutti gli iscritti al Suffragio perpetuo",
+  'Lunedì 2 novembre: Commemorazione dei fedeli defunti', 'Monday 2 November: Commemoration of the Faithful Departed',
+  [('clock', 'Lunedì 2 novembre · ore 11:00 Santa Messa al cimitero', 'Monday 2 November · 11 am Holy Mass at the cemetery'),
+   ('clock', 'Ore 17:30 · Santa Messa per tutti gli iscritti al Suffragio perpetuo', '5:30 pm · Holy Mass for all those enrolled in the Perpetual Suffrage')],
+  "Nel giorno in cui la Chiesa ricorda tutti i fedeli defunti, ci uniamo nella preghiera per i nostri cari, affidandoli alla misericordia del Signore.",
+  "On the day the Church remembers all the faithful departed, we join in prayer for our loved ones, entrusting them to the mercy of the Lord.",
+  [("Ore <strong>11:00</strong> · <strong>Santa Messa al cimitero</strong>.", "<strong>11 am</strong> · <strong>Holy Mass at the cemetery</strong>."),
+   ("Ore <strong>17:30</strong> · <strong>Santa Messa per tutti gli iscritti al Suffragio perpetuo</strong>.", "<strong>5:30 pm</strong> · <strong>Holy Mass for all those enrolled in the Perpetual Suffrage</strong>."),
+   CEL_LINK],
+  extra=f'<blockquote class="fv-quote">{I["quote"]}<p><span data-lang-it>«Io sono la risurrezione e la vita; chi crede in me, anche se muore, vivrà»</span><span data-lang-en>“I am the resurrection and the life. Whoever believes in me, though he die, yet shall he live”</span> <cite>Gv 11,25</cite></p></blockquote>',
+  thumb='celebrazioni-santi-defunti-2026-2nov'))
+
 # 4) Bonus sociale bollette 2026 — luce, gas, acqua, rifiuti (infografica UILM Novara)
 items.append(item('bonus-sociale-bollette-2026', 'vita', '2026-01-01', '2026-12-31', '', '', '', '',
   'bonus-sociale-bollette-2026', 'Infografica: Bonus sociale bollette 2026, sconti su luce, gas, acqua e rifiuti per le famiglie con ISEE basso',
@@ -320,6 +366,25 @@ items.append(item('presentazione-libri-2026', 'parrocchia', '2026-11-16', '2026-
    ("Ore <strong>17:30</strong> Santa Messa · ore <strong>18:30</strong> conferenza, nella Chiesa di San Giuseppe.", "<strong>5:30 pm</strong> Holy Mass · <strong>6:30 pm</strong> talk, in the Church of San Giuseppe.")],
   extra=f'<blockquote class="fv-quote">{I["quote"]}<p><span data-lang-it>«Quando moriremo, nessuno ci verrà a chiedere quanto siamo stati credenti, ma credibili»</span><span data-lang-en>“When we die, no one will ask us how much we believed, but how believable we were”</span> <cite>Beato Rosario Livatino</cite></p></blockquote>',
   flag_it='Aperto a tutti', flag_en='Open to all'))
+
+# 5c) Raccolta fondi per la statua del Cristo Risorto (Gesù e Maria) — in corso, senza data:
+#     richiamo della card #raccolte della home, con la locandina completa del parroco (30/10/2026)
+IBAN_GM = '''<div class="iban-box">
+              <span class="iban-val" data-iban><span class="ib-lbl">IBAN</span><span class="ib-part">IT48 U050 3482 8700</span> <span class="ib-part">0000 0002 596</span></span>
+              <button type="button" data-copy-iban><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span data-lang-it>Copia</span><span data-lang-en>Copy</span></button>
+            </div>'''
+items.append(item('raccolta-cristo-risorto', 'parrocchia', '', '', '', '', '', '',
+  'raccolta-cristo-risorto', "Locandina dell'Unità Pastorale Sacra Famiglia: raccolta fondi per la statua del Cristo Risorto della Gesù e Maria, con la statua del Risorto che regge lo stendardo con la croce; contributo in parrocchia a P. Marco o P. Augustino oppure con bonifico alla Parrocchia Gesù e Maria, causale «Statua del Cristo Risorto»",
+  'Raccolta fondi per la statua del Cristo Risorto della Gesù e Maria', 'Fundraising for the statue of the Risen Christ of Gesù e Maria',
+  [('heart', 'Raccolta in corso · in parrocchia o con bonifico', 'Ongoing appeal · at the parish or by bank transfer')],
+  "<strong>Insieme possiamo fare tanto…</strong> conservare e tutelare le opere artistiche e di Fede della nostra comunità.",
+  "<strong>Together we can do so much…</strong> preserving and protecting the works of art and faith of our community.",
+  [("Se vuoi dare un tuo contributo puoi lasciarlo <strong>direttamente in parrocchia</strong> (P. Marco o P. Augustino).", "If you would like to contribute, you can hand your gift <strong>directly at the parish</strong> (Fr. Marco or Fr. Augustino)."),
+   ("Oppure tramite <strong>bonifico</strong> intestato alla Parrocchia Gesù e Maria, Campobello di Licata · Banco BPM S.p.A., Campobello di Licata.", "Or by <strong>bank transfer</strong> to the Parrocchia Gesù e Maria, Campobello di Licata · Banco BPM S.p.A., Campobello di Licata."),
+   ("Causale: <strong>«Statua del Cristo Risorto»</strong>.", "Payment reference: <strong>«Statua del Cristo Risorto»</strong>.")],
+  extra=IBAN_GM + '\n            <p class="fv-help"><span data-lang-it>Trovi la raccolta anche nella <a href="index.html#raccolte">pagina principale</a>; per le offerte libere alle parrocchie vedi <a href="donazioni.html">Donazioni</a>.</span><span data-lang-en>You can also find this appeal on the <a href="index.html#raccolte">home page</a>; for free-will offerings to the parishes see <a href="donazioni.html">Donations</a>.</span></p>',
+  wico='heart',
+  badge=(None, 'Raccolta', 'Appeal', 'in corso', 'ongoing')))
 
 # 6) CUP pieno — sempre valido
 extra_cup = '''<div class="fv-classes" role="list">
@@ -502,6 +567,26 @@ ld = [
    "image": "https://www.unitapastoralesacrafamiglia.it/assets/img/avvisi/festa-dei-santi-2026.jpg",
    "description": "Bambini, vi aspettiamo sabato 31 ottobre 2026 dalle 16:00 alle 17:00 sul sagrato della Chiesa di San Giuseppe per festeggiare la Solennità di Tutti i Santi. I genitori sono invitati a portare qualcosa per la merenda.",
    "audience": {"@type": "PeopleAudience", "audienceType": "Bambini"},
+   "organizer": org, "isAccessibleForFree": True},
+  {"@context": "https://schema.org", "@type": "Event", "name": "Santa Messa di sabato 31 ottobre",
+   "startDate": "2026-10-31T17:30:00+01:00", "eventStatus": "https://schema.org/EventScheduled",
+   "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "location": place("Chiesa di Gesù e Maria", "Via Napoli"),
+   "image": "https://www.unitapastoralesacrafamiglia.it/assets/img/avvisi/celebrazioni-santi-defunti-2026.jpg",
+   "description": "Sabato 31 ottobre 2026 alle 17:30 Santa Messa nella Parrocchia Gesù e Maria; alle 16:00 festa al catechismo, festa di Tutti i Santi, nella Parrocchia San Giuseppe.",
+   "organizer": org, "isAccessibleForFree": True},
+  {"@context": "https://schema.org", "@type": "Event", "name": "Festa di Tutti i Santi — Sante Messe",
+   "startDate": "2026-11-01T09:30:00+01:00", "eventStatus": "https://schema.org/EventScheduled",
+   "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+   "location": [place("Chiesa di Gesù e Maria", "Via Napoli"), place("Chiesa di San Giuseppe", "Piazza San Giuseppe")],
+   "image": "https://www.unitapastoralesacrafamiglia.it/assets/img/avvisi/celebrazioni-santi-defunti-2026.jpg",
+   "description": "Domenica 1° novembre 2026, festa di Tutti i Santi: Sante Messe alle 9:30 e alle 18:00 nella Chiesa di Gesù e Maria, alle 11:00 e alle 18:30 nella Chiesa di San Giuseppe.",
+   "organizer": org, "isAccessibleForFree": True},
+  {"@context": "https://schema.org", "@type": "Event", "name": "Commemorazione dei fedeli defunti — Santa Messa al cimitero",
+   "startDate": "2026-11-02T11:00:00+01:00", "eventStatus": "https://schema.org/EventScheduled",
+   "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+   "location": {"@type": "Place", "name": "Cimitero di Campobello di Licata", "address": {"@type": "PostalAddress", "addressLocality": "Campobello di Licata", "addressRegion": "AG", "postalCode": "92023", "addressCountry": "IT"}},
+   "image": "https://www.unitapastoralesacrafamiglia.it/assets/img/avvisi/celebrazioni-santi-defunti-2026.jpg",
+   "description": "Lunedì 2 novembre 2026, Commemorazione dei fedeli defunti: alle 11:00 Santa Messa al cimitero; alle 17:30 Santa Messa per tutti gli iscritti al Suffragio perpetuo.",
    "organizer": org, "isAccessibleForFree": True},
   {"@context": "https://schema.org", "@type": "Event", "name": "Oratorio Terza Età… per tutte le età — Oratorio S. Giuseppe",
    "startDate": "2026-10-16T15:45:00+02:00", "eventStatus": "https://schema.org/EventScheduled",
