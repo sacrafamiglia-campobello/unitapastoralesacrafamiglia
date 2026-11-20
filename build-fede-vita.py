@@ -151,6 +151,87 @@ DL_CATECHISMO = '''<div class="dl-box" id="moduli-catechismo">
 
 items = []
 
+# ★ Festa dell'Immacolata 2026 — novena e festa (29 novembre – 8 dicembre), Chiesa di Gesù e Maria.
+#   Programma trascritto dalla locandina (images/avvisi/festa-immacolata-2026.jpg); in evidenza anche in home (#festa-immacolata).
+IMM_DAYS = [
+  ('Domenica 29 novembre', 'Sunday 29 November', 'Giornata delle Famiglie', 'Day of Families', '', '', [
+    ('9:30', 'Santa Messa presieduta da P. Augustino', 'Holy Mass presided by Fr Augustino'),
+    ('11:00', 'Santa Messa presieduta da P. Marco con i bambini e i ragazzi del catechismo e le famiglie', 'Holy Mass presided by Fr Marco with the catechism children and young people and their families'),
+    ('17:30', 'Rosario e Novena', 'Rosary and Novena'),
+    ('18:00', 'Santa Messa presieduta da don Giuseppe Cumbo, Vicario Generale', 'Holy Mass presided by Fr Giuseppe Cumbo, Vicar General')],
+   "Inaugurazione e apertura della <strong>Lotteria</strong> nel salone della Parrocchia.", "Opening of the <strong>Lottery</strong> in the parish hall."),
+  ('Lunedì 30 novembre', 'Monday 30 November', 'Giornata degli anziani e dei nonni', 'Day of the elderly and grandparents', '', '', [
+    ('17:30', 'Rosario e Novena', 'Rosary and Novena'),
+    ('18:00', 'Santa Messa presieduta da don Alessio Caruana e benedizione dei nonni e degli anziani', 'Holy Mass presided by Fr Alessio Caruana and blessing of grandparents and the elderly')], '', ''),
+  ('Martedì 1° dicembre', 'Tuesday 1 December', 'Giornata di preghiera per gli ammalati', 'Day of prayer for the sick', '', '', [
+    ('17:30', "Rosario (animato dai Ministri straordinari dell'Eucaristia) e Novena", 'Rosary (led by the Extraordinary Ministers of the Eucharist) and Novena'),
+    ('18:00', 'Santa Messa presieduta da don Gioacchino Scimè e Unzione degli infermi per i malati presenti', 'Holy Mass presided by Fr Gioacchino Scimè and Anointing of the Sick for the sick who are present')], '', ''),
+  ('Mercoledì 2 dicembre', 'Wednesday 2 December', 'Giornata per la Vita e Giornata della Carità', 'Day for Life and Day of Charity',
+   'Raccolta di generi alimentari e prodotti per neonati e bambini a sostegno del Centro di aiuto alla Vita; raccolta di offerte e generi alimentari per i poveri.',
+   'Collection of food and products for newborns and children in support of the Pro-Life Help Centre; collection of offerings and food for the poor.', [
+    ('17:30', 'Rosario e Novena', 'Rosary and Novena'),
+    ('18:00', 'Santa Messa presieduta da don Leo Argento, con la benedizione dei neonati e delle mamme in attesa', 'Holy Mass presided by Fr Leo Argento, with the blessing of newborns and expectant mothers')], '', ''),
+  ('Giovedì 3 dicembre', 'Thursday 3 December', 'Giornata degli emigranti e dei disoccupati', 'Day of emigrants and the unemployed', '', '', [
+    ('17:30', 'Rosario', 'Rosary'),
+    ('18:00', 'Santa Messa con P. Augustino', 'Holy Mass with Fr Augustino')], '', ''),
+  ('Venerdì 4 dicembre', 'Friday 4 December', 'Giornata della Carità · primo venerdì del mese', 'Day of Charity · first Friday of the month',
+   'Raccolta di offerte e generi alimentari per i poveri.', 'Collection of offerings and food for the poor.', [
+    ('17:00', 'Adorazione, Rosario e Novena', 'Adoration, Rosary and Novena'),
+    ('18:00', 'Santa Messa presieduta da don Salvatore Falzone, Cappellano dei Carabinieri', 'Holy Mass presided by Fr Salvatore Falzone, Chaplain of the Carabinieri'),
+    ('19:00', 'Concerto dei bambini del coro «Matite Colorate» dell\'Unità Pastorale', 'Concert by the children of the Pastoral Unit\'s “Matite Colorate” choir')], '', ''),
+  ('Sabato 5 dicembre', 'Saturday 5 December', 'Giornata delle Vocazioni', 'Day of Vocations', '', '', [
+    ('17:30', 'Rosario e Novena', 'Rosary and Novena'),
+    ('18:00', 'Santa Messa presieduta dal Rettore del Seminario, don Giuseppe Agrò, con la presenza del Seminario', 'Holy Mass presided by the Rector of the Seminary, Fr Giuseppe Agrò, with the seminarians'),
+    ('19:00', 'Agape fraterna: ognuno porta qualcosa (tavola calda, dolce o bibita)', 'Fraternal agape: everyone brings something (savoury food, a dessert or a drink)')], '', ''),
+  ('Domenica 6 dicembre', 'Sunday 6 December', 'Giornata degli imprenditori e dei lavoratori', 'Day of entrepreneurs and workers', '', '', [
+    ('9:30', 'Santa Messa presieduta da P. Augustino', 'Holy Mass presided by Fr Augustino'),
+    ('11:00', 'Santa Messa presieduta da P. Marco con i bambini e i ragazzi del catechismo e le famiglie', 'Holy Mass presided by Fr Marco with the catechism children and young people and their families'),
+    ('17:30', 'Rosario e Novena', 'Rosary and Novena'),
+    ('18:00', 'Santa Messa', 'Holy Mass')], '', ''),
+  ('Lunedì 7 dicembre', 'Monday 7 December', 'Vigilia dell\'Immacolata', 'Eve of the Immaculate Conception', '', '', [
+    ('17:30', 'Rosario e Novena', 'Rosary and Novena'),
+    ('18:00', 'Santa Messa presieduta dall\'Arcivescovo, don Alessandro Damiano', 'Holy Mass presided by the Archbishop, Alessandro Damiano'),
+    ('19:00', 'Primi Vespri nella Solennità dell\'Immacolata', 'First Vespers of the Solemnity of the Immaculate Conception'),
+    ('19:45', '<strong>Falò dell\'Immacolata e tradizionale «muffulittata»</strong>', '<strong>Bonfire of the Immaculate and the traditional “muffulittata”</strong>')], '', ''),
+  ('Martedì 8 dicembre', 'Tuesday 8 December', 'Solennità dell\'Immacolata Concezione', 'Solemnity of the Immaculate Conception', '', '', [
+    ('9:30', 'Santa Messa presieduta da P. Augustino', 'Holy Mass presided by Fr Augustino'),
+    ('11:00', 'Santa Messa solenne presieduta dal Vescovo emerito di Nicosia, don Salvatore Muratore', 'Solemn Holy Mass presided by the Bishop Emeritus of Nicosia, Salvatore Muratore'),
+    ('18:00', 'Santa Messa presieduta da don Giuseppe Costanza, animata dal Coro polifonico «Alma Laetitia Cantorum»', 'Holy Mass presided by Fr Giuseppe Costanza, with the polyphonic choir “Alma Laetitia Cantorum”'),
+    ('', 'A seguire la <strong>Processione</strong>, con la presenza delle Autorità civili e militari del paese', 'Followed by the <strong>Procession</strong>, with the town\'s civil and military authorities')],
+   'Prima che il Simulacro rientri in chiesa, <strong>Atto di affidamento della città alla Vergine Immacolata</strong>.', 'Before the statue re-enters the church, <strong>Act of entrustment of the town to the Immaculate Virgin</strong>.'),
+]
+
+def imm_program():
+    out = ''
+    for i, (d_it, d_en, g_it, g_en, n_it, n_en, rows, f_it, f_en) in enumerate(IMM_DAYS):
+        cls = ' is-feast' if i == len(IMM_DAYS) - 1 else (' is-eve' if i == len(IMM_DAYS) - 2 else '')
+        lis = ''.join(f'<li><time>{t}</time><span><span data-lang-it>{it}</span><span data-lang-en>{en}</span></span></li>' for t, it, en in rows)
+        note = f'<p class="imm-note"><span data-lang-it>{n_it}</span><span data-lang-en>{n_en}</span></p>' if n_it else ''
+        foot = f'<p class="imm-foot"><span data-lang-it>{f_it}</span><span data-lang-en>{f_en}</span></p>' if f_it else ''
+        out += (f'<li class="imm-day{cls}"><div class="imm-day-h"><b><span data-lang-it>{d_it}</span><span data-lang-en>{d_en}</span></b>'
+                f'<em><span data-lang-it>{g_it}</span><span data-lang-en>{g_en}</span></em></div>{note}<ul>{lis}</ul>{foot}</li>')
+    return f'''<details class="imm-program" open>
+              <summary><span data-lang-it>Il programma giorno per giorno</span><span data-lang-en>The programme day by day</span></summary>
+              <ol class="imm-days">{out}</ol>
+            </details>'''
+
+items.append(item('festa-immacolata-2026', 'parrocchia', '2026-11-29', '2026-12-08', '', '', '', '',
+  'festa-immacolata-2026', "Locandina del programma della Festa dell'Immacolata 2026 della Comunità ecclesiale di Campobello di Licata e dell'Unità Pastorale Sacra Famiglia: il simulacro dorato dell'Immacolata tra i gigli, la chiesa di Gesù e Maria illuminata di sera e il programma dal 29 novembre all'8 dicembre",
+  "Festa dell'Immacolata 2026: novena e programma", 'Feast of the Immaculate Conception 2026: novena and programme',
+  [('cal', 'Dal 29 novembre all\'8 dicembre · ogni sera Rosario e Novena e Santa Messa alle 18:00', 'From 29 November to 8 December · every evening Rosary, Novena and Holy Mass at 6 pm'),
+   ('clock', 'Lunedì 7 dicembre, ore 19:45 · Falò dell\'Immacolata e «muffulittata»', 'Monday 7 December, 7:45 pm · Bonfire of the Immaculate and “muffulittata”'),
+   ('pin', 'Chiesa di Gesù e Maria', 'Church of Gesù e Maria')],
+  "La Comunità ecclesiale di Campobello di Licata e l'Unità Pastorale Sacra Famiglia si preparano alla <strong>Solennità dell'Immacolata</strong> con dieci giorni di preghiera: ogni giornata è dedicata a una parte della comunità, dalle famiglie agli ammalati, dai nonni ai lavoratori. Il programma culmina nel falò della sera del 7 dicembre e, l'8 dicembre, nella Messa solenne e nella processione per le vie del paese.",
+  "The Church community of Campobello di Licata and the Sacra Famiglia Pastoral Unit prepare for the <strong>Solemnity of the Immaculate Conception</strong> with ten days of prayer: each day is dedicated to a part of the community, from families to the sick, from grandparents to workers. The programme culminates in the bonfire on the evening of 7 December and, on 8 December, in the solemn Mass and the procession through the town.",
+  [("<strong>Domenica 29 novembre</strong>: apertura con la Giornata delle Famiglie e inaugurazione della Lotteria nel salone della Parrocchia.", "<strong>Sunday 29 November</strong>: opening with the Day of Families and the start of the Lottery in the parish hall."),
+   ("<strong>Mercoledì 2 e venerdì 4 dicembre</strong>: raccolte per i poveri e per il Centro di aiuto alla Vita (generi alimentari, prodotti per neonati e bambini).", "<strong>Wednesday 2 and Friday 4 December</strong>: collections for the poor and for the Pro-Life Help Centre (food, products for newborns and children)."),
+   ("<strong>Lunedì 7 dicembre</strong>: Messa presieduta dall'Arcivescovo, Primi Vespri e alle 19:45 il <strong>falò dell'Immacolata</strong> con la tradizionale «muffulittata».", "<strong>Monday 7 December</strong>: Mass presided by the Archbishop, First Vespers and at 7:45 pm the <strong>bonfire of the Immaculate</strong> with the traditional “muffulittata”."),
+   ("<strong>Martedì 8 dicembre</strong>: Messe alle 9:30, 11:00 (solenne, con il Vescovo emerito di Nicosia) e 18:00, poi la <strong>processione</strong> e l'Atto di affidamento della città alla Vergine Immacolata.", "<strong>Tuesday 8 December</strong>: Masses at 9:30 am, 11 am (solemn, with the Bishop Emeritus of Nicosia) and 6 pm, then the <strong>procession</strong> and the Act of entrustment of the town to the Immaculate Virgin.")],
+  extra=imm_program() + f'<blockquote class="fv-quote">{I["quote"]}<p><span data-lang-it>«Ave, piena di grazia, il Signore è con te»</span><span data-lang-en>“Hail, full of grace, the Lord is with you”</span> <cite>Lc 1,28</cite></p></blockquote>',
+  flag_it='Festa della comunità', flag_en='Community feast',
+  badge=(None, '29 nov', '29 Nov', '8 dic', '8 Dec'), wico='cal'))
+
+
 # 0) Coro dei bambini «Matite Colorate» — ogni venerdì 18:15, iscrizioni aperte
 items.append(item('coro-matite-colorate', 'parrocchia', '', '', '', '', '', '',
   'coro-matite-colorate', 'Locandina: iscrizioni aperte al coro dei bambini «Matite Colorate», ogni venerdì alle 18:15 nella Chiesa di San Giuseppe',
@@ -615,6 +696,12 @@ ld = [
    "performer": [{"@type": "Person", "name": "don Angelo Chillura"}, {"@type": "Person", "name": "don Giuseppe Livatino"}],
    "organizer": org, "isAccessibleForFree": True},
 ]
+ld.append({"@context": "https://schema.org", "@type": "Event", "name": "Festa dell'Immacolata 2026 — novena e solennità dell'Immacolata Concezione",
+   "startDate": "2026-11-29T09:30:00+01:00", "endDate": "2026-12-08T21:00:00+01:00", "eventStatus": "https://schema.org/EventScheduled",
+   "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "location": place("Chiesa di Gesù e Maria", "Via Napoli"),
+   "image": "https://www.unitapastoralesacrafamiglia.it/assets/img/avvisi/festa-immacolata-2026.jpg",
+   "description": "Dal 29 novembre all'8 dicembre 2026: ogni giorno Rosario e Novena e Santa Messa, con giornate dedicate a famiglie, anziani e nonni, ammalati, vita e carità, emigranti e disoccupati, vocazioni, imprenditori e lavoratori. Lunedì 7 dicembre alle 19:45 falò dell'Immacolata e tradizionale muffulittata; martedì 8 dicembre Messe alle 9:30, 11:00 (solenne, presieduta dal Vescovo emerito di Nicosia don Salvatore Muratore) e 18:00, poi la processione e l'Atto di affidamento della città alla Vergine Immacolata.",
+   "organizer": org, "isAccessibleForFree": True})
 ld_html = ''.join('<script type="application/ld+json">\n' + json.dumps(x, ensure_ascii=False) + '\n</script>\n' for x in ld)
 
 S = 'viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"'
