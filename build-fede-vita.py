@@ -449,6 +449,42 @@ items.append(item('presentazione-libri-2026', 'parrocchia', '2026-11-16', '2026-
         '<p class="fv-help"><span data-lang-it>L\'incontro si è svolto lunedì 16 novembre: <a href="vita-parrocchiale.html#incontro-beato-livatino">guarda le foto della serata</a>.</span><span data-lang-en>The evening took place on Monday 16 November: <a href="vita-parrocchiale.html#incontro-beato-livatino">see the photos</a>.</span></p>',
   flag_it='Aperto a tutti', flag_en='Open to all'))
 
+# 5d) Mercoledì 25 novembre — Giornata internazionale contro la violenza sulle donne: Adorazione, Messa per le vittime, marcia silenziosa
+#     Foto dell'altare con il programma (images/avvisi/violenza-donne-2026.jpg) + immagine-slogan (violenza-donne-2026-slogan.jpg)
+SLOGAN_VD = ("Solo un piccolo uomo usa violenza sulle donne per sentirsi grande", "Only a small man uses violence against women to feel big")
+items.append(item('giornata-contro-violenza-donne-2026', 'parrocchia', '2026-11-25', '2026-11-25', '25', 'novembre', 'November', '2026',
+  'violenza-donne-2026', "L'altare allestito per il 25 novembre 2026: un telo con le foto delle donne vittime di femminicidio, un drappo rosso con fiori e scarpe rosse e la statua del Cristo Risorto; in sovrimpressione il programma: ore 16:30 Adorazione, ore 17:30 Messa di preghiera per le vittime e dopo marcia silenziosa verso Piazza Marconi",
+  'Giornata contro la violenza sulle donne: preghiera per le vittime', 'Day against violence towards women: prayer for the victims',
+  [('clock', 'Mercoledì 25 novembre · ore 16:30 Adorazione, ore 17:30 Santa Messa', 'Wednesday 25 November · 4:30 pm Adoration, 5:30 pm Holy Mass'),
+   ('pin', 'A seguire marcia silenziosa verso Piazza Marconi', 'Followed by a silent march to Piazza Marconi')],
+  "Nella <strong>Giornata internazionale per l'eliminazione della violenza contro le donne</strong> la nostra comunità si è raccolta in preghiera per le vittime di femminicidio. Davanti all'altare, su un drappo rosso, i volti di tante donne uccise: <em>non numeri, ma nomi e storie</em> da affidare al Signore.",
+  "On the <strong>International Day for the Elimination of Violence against Women</strong> our community gathered in prayer for the victims of femicide. Before the altar, on a red drape, the faces of so many women who were killed: <em>not numbers, but names and stories</em> to entrust to the Lord.",
+  [("Ore <strong>16:30</strong> Adorazione eucaristica.", "<strong>4:30 pm</strong> Eucharistic Adoration."),
+   ("Ore <strong>17:30</strong> Santa Messa di preghiera per le vittime.", "<strong>5:30 pm</strong> Holy Mass of prayer for the victims."),
+   ("Dopo la Messa, <strong>marcia silenziosa verso Piazza Marconi</strong>: chi voleva portava un fiore o un cero.", "After Mass, a <strong>silent march to Piazza Marconi</strong>: anyone who wished brought a flower or a candle.")],
+  extra=f'<blockquote class="fv-quote">{I["quote"]}<p><span data-lang-it>«{SLOGAN_VD[0]}»</span><span data-lang-en>“{SLOGAN_VD[1]}”</span></p></blockquote>'
+        f'''
+            <button class="fv-poster" type="button" style="max-width:320px;aspect-ratio:426/268;margin-top:1rem" data-poster="assets/img/avvisi/violenza-donne-2026-slogan.jpg" data-caption-it="{SLOGAN_VD[0]}" data-caption-en="{SLOGAN_VD[1]}" aria-label="Apri l'immagine: {SLOGAN_VD[0]}">
+              <img src="assets/img/avvisi/violenza-donne-2026-slogan-t.jpg" alt="Immagine per la Giornata contro la violenza sulle donne: una mano tiene la parola UOMO in rosso nella scritta «Solo un piccolo uomo usa violenza sulle donne per sentirsi grande»" loading="lazy" width="426" height="268">
+              <span class="fv-zoom">{I["zoom"]}<span data-lang-it>Immagine</span><span data-lang-en>Image</span></span>
+            </button>'''
+        '\n            <p class="fv-help"><span data-lang-it>Il momento di preghiera si è svolto mercoledì 25 novembre 2026.</span><span data-lang-en>The prayer gathering took place on Wednesday 25 November 2026.</span></p>',
+  flag_it='Giornata internazionale', flag_en='International Day'))
+
+# 5e) Venerdì 18 dicembre — Incontro per famiglie «Famiglia e Intelligenza Artificiale», Chiesa di San Giuseppe, ore 18:30
+items.append(item('famiglia-e-intelligenza-artificiale', 'parrocchia', '2026-12-18', '2026-12-18', '18', 'dicembre', 'December', '2026',
+  'famiglia-intelligenza-artificiale-2026', "Locandina dell'Unità Pastorale Sacra Famiglia di Campobello di Licata: incontro per famiglie «Famiglia e Intelligenza Artificiale. Educare, proteggere, crescere insieme in un mondo che cambia», con una famiglia davanti a uno schermo e un piccolo robot; venerdì 18 dicembre 2026 alle 18:30 nella Chiesa di San Giuseppe, relatore il Prof. Francesco Pira dell'Università di Messina, ingresso libero",
+  'Famiglia e Intelligenza Artificiale: incontro per famiglie', 'Family and Artificial Intelligence: a meeting for families',
+  [('clock', 'Venerdì 18 dicembre · ore 18:30', 'Friday 18 December · 6:30 pm'),
+   ('pin', 'Chiesa di San Giuseppe, Campobello di Licata', 'Church of San Giuseppe, Campobello di Licata')],
+  "Un incontro pensato per le famiglie: <strong>educare, proteggere, crescere insieme in un mondo che cambia</strong>. Genitori e figli di fronte all'intelligenza artificiale, con l'aiuto di un esperto. <strong>Ingresso libero.</strong>",
+  "A meeting designed for families: <strong>educating, protecting and growing together in a changing world</strong>. Parents and children facing artificial intelligence, with the help of an expert. <strong>Free entry.</strong>",
+  [("Relatore: <strong>Prof. Francesco Pira</strong>, Associato di Sociologia, Università di Messina.", "Speaker: <strong>Prof. Francesco Pira</strong>, Associate Professor of Sociology, University of Messina."),
+   ("Parroco: <strong>P. Marco Damanti</strong>.", "Parish priest: <strong>Fr. Marco Damanti</strong>."),
+   ("Venerdì <strong>18 dicembre 2026</strong>, ore <strong>18:30</strong>, nella Chiesa di San Giuseppe.", "Friday <strong>18 December 2026</strong>, <strong>6:30 pm</strong>, in the Church of San Giuseppe."),
+   ("<strong>Ingresso libero</strong>: l'incontro è aperto a tutte le famiglie.", "<strong>Free entry</strong>: the meeting is open to all families.")],
+  flag_it='Ingresso libero', flag_en='Free entry'))
+
 # 5c) Raccolta fondi per la statua del Cristo Risorto (Gesù e Maria) — in corso, senza data:
 #     richiamo della card #raccolte della home, con la locandina completa del parroco (30/10/2026)
 IBAN_GM = '''<div class="iban-box">
@@ -702,7 +738,21 @@ ld.append({"@context": "https://schema.org", "@type": "Event", "name": "Festa de
    "image": "https://www.unitapastoralesacrafamiglia.it/assets/img/avvisi/festa-immacolata-2026.jpg",
    "description": "Dal 29 novembre all'8 dicembre 2026: ogni giorno Rosario e Novena e Santa Messa, con giornate dedicate a famiglie, anziani e nonni, ammalati, vita e carità, emigranti e disoccupati, vocazioni, imprenditori e lavoratori. Lunedì 7 dicembre alle 19:45 falò dell'Immacolata e tradizionale muffulittata; martedì 8 dicembre Messe alle 9:30, 11:00 (solenne, presieduta dal Vescovo emerito di Nicosia don Salvatore Muratore) e 18:00, poi la processione e l'Atto di affidamento della città alla Vergine Immacolata.",
    "organizer": org, "isAccessibleForFree": True})
-ld_html = ''.join('<script type="application/ld+json">\n' + json.dumps(x, ensure_ascii=False) + '\n</script>\n' for x in ld)
+ld.append({"@context": "https://schema.org", "@type": "Event", "name": "Giornata contro la violenza sulle donne — Adorazione, Santa Messa di preghiera per le vittime e marcia silenziosa",
+   "startDate": "2026-11-25T16:30:00+01:00", "eventStatus": "https://schema.org/EventScheduled",
+   "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+   "location": {"@type": "Place", "name": "Unità Pastorale Sacra Famiglia", "address": {"@type": "PostalAddress", "addressLocality": "Campobello di Licata", "addressRegion": "AG", "postalCode": "92023", "addressCountry": "IT"}},
+   "image": "https://www.unitapastoralesacrafamiglia.it/assets/img/avvisi/violenza-donne-2026.jpg",
+   "description": "Mercoledì 25 novembre 2026, Giornata internazionale per l'eliminazione della violenza contro le donne: alle 16:30 Adorazione, alle 17:30 Santa Messa di preghiera per le vittime e dopo marcia silenziosa verso Piazza Marconi, portando un fiore o un cero.",
+   "organizer": org, "isAccessibleForFree": True})
+ld.append({"@context": "https://schema.org", "@type": "Event", "name": "Famiglia e Intelligenza Artificiale — incontro per famiglie",
+   "startDate": "2026-12-18T18:30:00+01:00", "eventStatus": "https://schema.org/EventScheduled",
+   "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "location": place("Chiesa di San Giuseppe", "Piazza San Giuseppe"),
+   "image": "https://www.unitapastoralesacrafamiglia.it/assets/img/avvisi/famiglia-intelligenza-artificiale-2026.jpg",
+   "description": "Incontro per famiglie «Famiglia e Intelligenza Artificiale. Educare, proteggere, crescere insieme in un mondo che cambia»: venerdì 18 dicembre 2026 alle 18:30 nella Chiesa di San Giuseppe. Relatore il Prof. Francesco Pira, Associato di Sociologia all'Università di Messina. Ingresso libero.",
+   "performer": {"@type": "Person", "name": "Francesco Pira"},
+   "organizer": org, "isAccessibleForFree": True})
+ld_html =''.join('<script type="application/ld+json">\n' + json.dumps(x, ensure_ascii=False) + '\n</script>\n' for x in ld)
 
 S = 'viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"'
 IC = {
